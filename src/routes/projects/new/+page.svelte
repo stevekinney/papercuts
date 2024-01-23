@@ -12,7 +12,7 @@
 </script>
 
 <form
-  class="flex flex-col gap-2 p-4 border-2 border-slate-200 m-2 rounded-md shadow-sm"
+  class="m-2 flex flex-col gap-2 rounded-md border-2 border-slate-200 p-4 shadow-sm"
   on:submit|preventDefault={handleSubmit}
 >
   <h2 class="font-bold">Add a New Project</h2>

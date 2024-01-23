@@ -7,7 +7,7 @@
   <title>Papercuts</title>
 </svelte:head>
 
-<main class="w-screen h-screen flex">
+<main class="flex h-screen w-screen">
   <Container />
   <slot />
 </main>

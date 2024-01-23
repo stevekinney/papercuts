@@ -36,7 +36,7 @@
 </script>
 
 <div
-  class="{className} bg-center bg-no-repeat bg-contain relative axis-background"
+  class="{className} axis-background relative bg-contain bg-center bg-no-repeat"
   on:dragover|preventDefault
   on:drop|preventDefault={drop}
   bind:this={element}

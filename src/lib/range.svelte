@@ -10,8 +10,8 @@
   export let label: string;
 </script>
 
-<div class="space-y-2 w-full">
-  <div class="flex justify-between items-center">
+<div class="w-full space-y-2">
+  <div class="flex items-center justify-between">
     <label for="{name}-range">{label}</label>
     <label for="{name}-input" class="sr-only">{label} Manual Input</label>
     <input

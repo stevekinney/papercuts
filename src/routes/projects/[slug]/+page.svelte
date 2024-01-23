@@ -25,17 +25,17 @@
 </script>
 
 {#if $card}
-  <div class="p-4 border-2 border-slate-200 m-2 rounded-md shadow-md space-y-4">
+  <div class="m-2 space-y-4 rounded-md border-2 border-slate-200 p-4 shadow-md">
     <header class="flex items-center justify-between">
       <h2 class="sr-only">{$card.title}</h2>
       <input
         name="title"
         value={$card.title}
         on:change={handleChange}
-        class="border-0 px-0 font-bold w-fit py-1"
+        class="w-fit border-0 px-0 py-1 font-bold"
       />
       <button
-        class="p-0 bg-white text-xl hover:bg-white hover:ring-2 ring-purple-400 px-2"
+        class="bg-white p-0 px-2 text-xl ring-purple-400 hover:bg-white hover:ring-2"
         on:click={card.remove}>🗑️</button
       >
     </header>

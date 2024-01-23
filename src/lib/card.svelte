@@ -24,7 +24,7 @@
 <a
   href="/projects/{id}"
   id="card-{id}"
-  class="p-2 border-2 min-w-24 border-slate-800 bg-purple-50 absolute flex flex-col gap-1 justify-center items-center rounded-md shadow-sm text-xs hover:no-underline text-current hover:text-current hover:z-30 whitespace-nowrap"
+  class="absolute flex min-w-24 flex-col items-center justify-center gap-1 whitespace-nowrap rounded-md border-2 border-slate-800 bg-purple-50 p-2 text-xs text-current shadow-sm hover:z-30 hover:text-current hover:no-underline"
   class:bg-purple-200={$page.params.slug === id}
   class:z-20={$page.params.slug === id}
   style="left: {left}%; top: {top}%;"

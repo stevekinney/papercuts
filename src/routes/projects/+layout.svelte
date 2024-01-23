@@ -3,12 +3,12 @@
   import cards from '$lib/cards';
 </script>
 
-<div class="border-l-2 border-slate-900 z-10 bg-white min-w-96">
-  <nav class="bg-slate-900 text-white flex justify-between">
-    <a href="/projects/new" class="block p-2 hover:bg-purple-800 text-current hover:text-purple-50">
+<div class="z-10 min-w-96 border-l-2 border-slate-900 bg-white">
+  <nav class="flex justify-between bg-slate-900 text-white">
+    <a href="/projects/new" class="block p-2 text-current hover:bg-purple-800 hover:text-purple-50">
       New
     </a>
-    <a href="/" class="block p-2 hover:bg-purple-800 text-current hover:text-purple-50">❌</a>
+    <a href="/" class="block p-2 text-current hover:bg-purple-800 hover:text-purple-50">❌</a>
   </nav>
   <section class="space-y-8 p-2">
     <slot />
@@ -21,7 +21,7 @@
           <li>
             <a
               href="/projects/{card.id}"
-              class="p-2 hover:bg-purple-100 hover:no-underline hover:text-current text-current flex gap-2 items-center text-sm"
+              class="flex items-center gap-2 p-2 text-sm text-current hover:bg-purple-100 hover:text-current hover:no-underline"
               class:bg-purple-50={$page.params.slug === card.id}
             >
               <p class="w-full">{card.title}</p>
