@@ -24,17 +24,13 @@
 <a
   href="/projects/{id}"
   id="card-{id}"
-  class="p-2 border-2 w-36 border-slate-800 bg-purple-50 absolute flex flex-col gap-1 justify-center items-center rounded-md shaodw-md text-xs hover:no-underline text-current hover:text-current"
-  class:bg-purple-100={$page.params.slug === id}
+  class="p-2 border-2 min-w-24 border-slate-800 bg-purple-50 absolute flex flex-col gap-1 justify-center items-center rounded-md shadow-sm text-xs hover:no-underline text-current hover:text-current hover:z-30 whitespace-nowrap"
+  class:bg-purple-200={$page.params.slug === id}
   class:z-20={$page.params.slug === id}
-  style="left: {left}%; top: {top}%"
+  style="left: {left}%; top: {top}%;"
   draggable="true"
   on:dragstart={dragStart}
   data-sveltekit-replacestate="true"
 >
   <h2 class="font-semibold">{title}</h2>
-  <div class="flex gap-2">
-    <p class="before:content-['💪'] before:mr-1">{effort.toFixed(1)}</p>
-    <p class="before:content-['🥰'] before:mr-1">{impact.toFixed(1)}</p>
-  </div>
 </a>
