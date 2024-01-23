@@ -32,7 +32,8 @@ cards.subscribe((cards) => {
 });
 
 const get = (id: Card['id']) => {
-  return derived(cards, ($cards) => $cards.find((c) => c.id === id));
+  const { subscribe } = derived(cards, ($cards) => $cards.find((c) => c.id === id));
+  return { subscribe, update: update.bind(null, id), remove: remove.bind(null, id) };
 };
 
 const add = (card: Omit<Card, 'id'>) => {
