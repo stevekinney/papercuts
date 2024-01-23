@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  label {
+    @apply block text-slate-700 font-semibold text-sm;
+  }
+
+  label:has(input) {
+    @apply flex gap-2 items-center;
+  }
+
+  label:has(input[type='range']) {
+    @apply flex-col items-start;
+  }
+
+  input {
+    @apply border border-slate-300 rounded-md px-2 my-1 outline-none ring-purple-400 placeholder-purple-400 accent-purple-700 disabled:cursor-not-allowed focus:ring-2 w-full placeholder:font-normal;
+  }
+
+  input[type='range'] {
+    @apply w-full border-0 focus:ring-0;
+  }
+
+  button,
+  [type='submit'] {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-600 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 disabled:cursor-not-allowed disabled:bg-purple-100 disabled:text-purple-500;
+  }
+
+  a {
+    @apply text-purple-600 hover:text-purple-700 hover:underline decoration-slate-700 decoration-2;
+  }
+}
+
+@layer components {
+  .axis-background {
+    --axis-thickness: 10px;
+    --color-y-axis: theme('colors.blue.400');
+    --color-x-axis: theme('colors.red.400');
+    --label-x-axis: 'Impact';
+    --label-y-axis: 'Effort';
+
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        transparent calc(50% - var(--axis-thickness) / 2),
+        var(--color-x-axis) calc(50% - var(--axis-thickness) / 2),
+        var(--color-x-axis) calc(50% + var(--axis-thickness) / 2),
+        transparent calc(50% + var(--axis-thickness) / 2)
+      ),
+      linear-gradient(
+        to right,
+        transparent calc(50% - var(--axis-thickness) / 2),
+        var(--color-y-axis) calc(50% - var(--axis-thickness) / 2),
+        var(--color-y-axis) calc(50% + var(--axis-thickness) / 2),
+        transparent calc(50% + var(--axis-thickness) / 2)
+      );
+  }
+
+  .axis-background::before {
+    content: var(--label-x-axis);
+    position: absolute;
+    font-weight: bold;
+    top: calc(50% - var(--axis-thickness) * 2);
+    left: calc(50% + var(--axis-thickness));
+    transform: rotate(-90deg);
+    transform-origin: left top;
+  }
+
+  .axis-background::after {
+    content: var(--label-y-axis);
+    position: absolute;
+    font-weight: bold;
+    top: calc(50% + var(--axis-thickness));
+    left: var(--axis-thickness);
+  }
+}
