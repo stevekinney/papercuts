@@ -1,29 +1,26 @@
 <script lang="ts">
   import type { ChangeEventHandler } from 'svelte/elements';
 
+  import Range from '$lib/range.svelte';
+
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
 
   import cards from '$lib/cards';
 
   $: card = cards.get($page.params.slug);
+  $: !card && goto('/projects', { replaceState: true });
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+  const handleChange = (e: Event) => {
     if (!$card) return;
     const target = e.target as HTMLInputElement;
     const { name, valueAsNumber, value } = target;
 
     if (target.type === 'range' || target.type === 'number') {
-      cards.update($card.id, { [name]: valueAsNumber });
+      card.update({ [name]: valueAsNumber });
     } else {
-      cards.update($card.id, { [name]: value });
+      card.update({ [name]: value });
     }
-  };
-
-  const handleDelete = () => {
-    if (!$card) return;
-    cards.remove($card.id);
-    goto('/projects');
   };
 </script>
 
@@ -35,36 +32,31 @@
         name="title"
         value={$card.title}
         on:change={handleChange}
-        class="border-0 px-0 font-bold"
+        class="border-0 px-0 font-bold w-fit py-1"
       />
       <button
         class="p-0 bg-white text-xl hover:bg-white hover:ring-2 ring-purple-400 px-2"
-        on:click={handleDelete}>🗑️</button
+        on:click={card.remove}>🗑️</button
       >
     </header>
-    <label>
-      Effort: {$card.effort.toFixed(1)}
-      <input
-        type="range"
-        name="effort"
-        min="0"
-        max="10"
-        step="0.1"
-        value={$card.effort}
-        on:change={handleChange}
-      />
-    </label>
-    <label>
-      Impact: {$card.impact.toFixed(1)}
-      <input
-        type="range"
-        name="impact"
-        min="0"
-        max="10"
-        step="0.1"
-        value={$card.impact}
-        on:change={handleChange}
-      />
-    </label>
+
+    <Range
+      name="effort"
+      value={$card.effort}
+      min="0"
+      max="10"
+      step="0.1"
+      label="Effort"
+      on:change={handleChange}
+    />
+    <Range
+      name="impact"
+      value={$card.impact}
+      min="0"
+      max="10"
+      step="0.1"
+      label="Impact"
+      on:change={handleChange}
+    />
   </div>
 {/if}
