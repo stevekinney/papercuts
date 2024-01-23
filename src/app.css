@@ -19,6 +19,10 @@
     @apply border border-slate-300 rounded-md px-2 my-1 outline-none ring-purple-400 placeholder-purple-400 accent-purple-700 disabled:cursor-not-allowed focus:ring-2 w-full placeholder:font-normal;
   }
 
+  input[type='number'] {
+    @apply pr-0;
+  }
+
   input[type='range'] {
     @apply w-full border-0 focus:ring-0;
   }
